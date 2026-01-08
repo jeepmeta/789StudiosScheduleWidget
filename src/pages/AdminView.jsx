@@ -1,13 +1,10 @@
-import React from 'react';
-import AdminPanel from '../components/admin/AdminPanel.jsx';
-import Preview from '../components/admin/Preview.jsx';
-import '../styles/admin.css';
+import "../styles/admin-sidebar.css";
+import AdminSidebar from "../components/AdminSidebar/AdminSidebar.jsx";
 
 function AdminView() {
   return (
     <div className="app-root admin-root">
-      <AdminPanel />
-      <Preview />
+      <AdminSidebar />
     </div>
   );
 }

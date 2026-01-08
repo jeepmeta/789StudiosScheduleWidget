@@ -1,0 +1,56 @@
+/* -------------------------------------------------------
+   SCHEDULE GRID — 3 ROW SYSTEM
+------------------------------------------------------- */
+.schedule-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--row-gap);
+  padding: 20px;
+  padding-bottom: 50vh;
+  margin-top: 120px;
+  width: 100%;
+  max-width: var(--schedule-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.schedule-row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: var(--slot-gap);
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+}
+
+/* -------------------------------------------------------
+   RESPONSIVE TUNING
+------------------------------------------------------- */
+@media (max-width: 900px) {
+  :root {
+    --slot-min-size: 100px;
+    --slot-gap: 16px;
+    --row-gap: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --slot-min-size: 80px;
+    --slot-gap: 12px;
+    --row-gap: 24px;
+  }
+
+  .schedule-grid {
+    margin-top: 80px;
+  }
+}
+
+@media (max-width: 400px) {
+  :root {
+    --slot-min-size: 70px;
+  }
+}

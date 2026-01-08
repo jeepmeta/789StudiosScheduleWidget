@@ -1,0 +1,38 @@
+/* -------------------------------------------------------
+   PARALLAX BACKGROUND
+------------------------------------------------------- */
+.parallax-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.parallax-layer {
+  position: absolute;
+  box-sizing: content-box;
+  top: 0;
+  left: 50%;
+  width: var(--schedule-max-width);
+  height: 100vh;
+  transform: translateX(-50%) translateY(var(--yOffset)) scale(var(--scale));
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: var(--opacity);
+  will-change: transform;
+  pointer-events: none;
+
+  /* Prevent global transitions from breaking parallax */
+  transition: none !important;
+}
+
+/* Ensure body background sits behind parallax */
+body {
+  position: relative;
+  z-index: -1;
+}

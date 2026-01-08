@@ -1,0 +1,67 @@
+/* -------------------------------------------------------
+   SLOT (lighter container)
+------------------------------------------------------- */
+.slot {
+  position: relative;
+  width: 100%;
+  height: auto;
+  z-index: 2;
+  cursor: pointer;
+  overflow: visible;
+  transition: transform 150ms ease;
+}
+
+.slot:hover {
+  transform: translateY(-8px);
+}
+
+.slot-inner {
+  position: relative;
+  width: 100%;
+  height: auto;
+  z-index: 0;
+}
+
+.slot-lighter {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+}
+
+/* -------------------------------------------------------
+   LIVE GLOW
+------------------------------------------------------- */
+@keyframes liveGlowPulse {
+  0% {
+    opacity: calc(var(--live-glow-intensity) * 0.8);
+    transform: scale(1);
+  }
+  50% {
+    opacity: calc(var(--live-glow-intensity) * 1);
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: calc(var(--live-glow-intensity) * 0.8);
+    transform: scale(1);
+  }
+}
+
+.slot-live::after {
+  content: "";
+  position: absolute;
+  inset: calc(var(--live-glow-size) * -1);
+  border-radius: 8px;
+  background: radial-gradient(
+    var(--live-glow-color-inner),
+    var(--live-glow-color-outer),
+    transparent
+  );
+  filter: blur(var(--live-glow-blur));
+  opacity: var(--live-glow-intensity);
+  z-index: 0;
+  pointer-events: none;
+  animation: liveGlowPulse var(--live-glow-pulse-speed) ease-in-out infinite;
+}

@@ -1,7 +1,6 @@
-import React from 'react';
-import ScheduleGrid from '../components/schedule/ScheduleGrid.jsx';
-import ParallaxBackground from '../components/schedule/ParallaxBackground.jsx';
-import '../styles/schedule.css';
+import "../styles/schedule.css";
+import ScheduleGrid from "../components/schedule/ScheduleGrid.jsx";
+import ParallaxBackground from "../components/schedule/ParallaxBackground.jsx";
 
 function ScheduleView() {
   return (

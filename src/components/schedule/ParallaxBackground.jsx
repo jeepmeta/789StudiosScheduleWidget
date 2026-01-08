@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useConfig } from '../../hooks/useConfig.js';
+import { useState, useEffect } from "react";
+import { useRootConfig } from "../../context/RootConfigContext.jsx";
+import "../../styles/parallax.css";
 
 function ParallaxBackground() {
-  const { parallaxLayers, globalParallax } = useConfig();
+  const { parallaxLayers, globalParallax } = useRootConfig();
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -12,25 +13,22 @@ function ParallaxBackground() {
   }, []);
 
   return (
-    <div className="parallax-root">
+    <div className="parallax-container">
       {parallaxLayers.map((layer) => {
-        // Placeholder math; we’ll refine later with depth + global controls
         const depth = layer.baseDepth + globalParallax.sceneDepth * 0.05;
         const yOffset = scrollY * depth * globalParallax.scrollIntensity;
-
-        const style = {
-          transform: `translate3d(0, ${yOffset}px, 0) scale(${layer.baseScale})`,
-          opacity: layer.baseOpacity,
-        };
 
         return (
           <div
             key={layer.id}
             className="parallax-layer"
-            style={style}
-          >
-            <img src={layer.src} alt={`Parallax layer ${layer.id}`} />
-          </div>
+            style={{
+              '--yOffset': `${yOffset}px`,
+              '--scale': layer.baseScale,
+              '--opacity': layer.baseOpacity,
+              backgroundImage: `url(${layer.src})`,
+            }}
+          />
         );
       })}
     </div>

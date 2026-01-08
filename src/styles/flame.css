@@ -1,0 +1,131 @@
+.flame-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1; /* flame video sits under FX, over lighter */
+}
+
+/* Flame video matches lighter image size/position */
+.flame-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: screen;
+  opacity: var(--flame-opacity, 1);
+  pointer-events: none;
+}
+
+/* FX layers positioned by origin sliders */
+.flame-core,
+.flame-glow,
+.flame-shimmer {
+  position: absolute;
+  transform: translate(-50%, -50%) scale(var(--fx-flicker-scale, 1));
+  left: var(--fx-origin-x, 50%);
+  top: var(--fx-origin-y, 50%);
+}
+
+/* -------------------------------------------------- */
+/* FLAME CORE (main flame shape) */
+/* -------------------------------------------------- */
+.flame-core {
+  position: absolute;
+  width: 120px;
+  height: 180px;
+  transform: translateX(-50%) scale(var(--fx-flicker-scale, 1));
+  opacity: var(--fx-flicker-opacity, 1);
+  background: radial-gradient(
+    ellipse at center,
+    var(--live-glow-color-inner, #ffb400) 0%,
+    var(--live-glow-color-outer, #ff5500) 70%,
+    transparent 100%
+  );
+  filter: blur(18px);
+  animation: flameNoise 0.12s infinite linear;
+}
+
+@keyframes flameNoise {
+  0% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.04); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+/* -------------------------------------------------- */
+/* GLOW AURA */
+/* -------------------------------------------------- */
+.flame-glow {
+  position: absolute;
+  width: var(--live-glow-size, 200px);
+  height: var(--live-glow-size, 200px);
+  transform: translateX(-50%);
+  background: radial-gradient(
+    circle,
+    var(--live-glow-color-inner, #ffb400),
+    var(--live-glow-color-outer, #ff5500),
+    transparent
+  );
+  filter: blur(var(--live-glow-blur, 40px));
+  opacity: var(--live-glow-intensity, 0.8);
+  animation: glowPulse var(--live-glow-pulse-speed, 2s) infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+/* -------------------------------------------------- */
+/* SHIMMER */
+/* -------------------------------------------------- */
+.flame-shimmer {
+  position: absolute;
+  width: 160px;
+  height: 260px;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255,255,255,0.15),
+    transparent
+  );
+  filter: blur(30px);
+  opacity: var(--fx-shimmer, 0.4);
+}
+
+/* -------------------------------------------------- */
+/* EMBERS */
+/* -------------------------------------------------- */
+.fx-embers {
+  position: absolute;
+  inset: 0;
+}
+
+.ember {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #ffddaa;
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: 1;
+}
+
+/* -------------------------------------------------- */
+/* SPARKS */
+/* -------------------------------------------------- */
+.fx-sparks {
+  position: absolute;
+  inset: 0;
+}
+
+.spark {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #ffd27f;
+  border-radius: 50%;
+  filter: blur(1px);
+  opacity: 1;
+}

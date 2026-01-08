@@ -1,0 +1,111 @@
+/* -------------------------------------------------------
+   POPUP (Image-only modal)
+------------------------------------------------------- */
+.popup-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  animation: popupFadeIn 200ms ease forwards;
+}
+
+.popup-backdrop.closing {
+  animation: popupFadeOut 200ms ease forwards;
+}
+
+@keyframes popupFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popupFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.popup {
+  position: relative;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  animation: popupIn 250ms ease;
+}
+
+@keyframes popupIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.popup-image {
+  width: 100%;
+  max-width: var(--popup-max-width);
+  display: block;
+  cursor: pointer;
+  transition: transform 150ms ease;
+}
+
+.popup-image:hover {
+  transform: scale(1.03);
+}
+
+.popup-image:active {
+  transform: scale(1.08);
+}
+
+.popup-x {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  color: white;
+  font-size: 20px;
+  line-height: 1;
+  padding: 4px 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 150ms ease;
+}
+
+.popup-x:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.popup-buttons {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.popup-btn {
+  flex: 1; /* each button takes equal width */
+  padding: 12px 18px;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  color: var(--text-light);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 20px;
+  transition: background 150ms ease, transform 150ms ease;
+}
+
+.popup-btn:hover {
+  background: var(--accent);
+  color: var(--text-dim);
+  transform: translateY(-2px);
+}
+
+.popup-btn:active {
+  transform: translateY(1px);
+}

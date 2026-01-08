@@ -1,0 +1,177 @@
+/* -------------------------------------------------------
+   ADMIN SIDEBAR CONTAINER
+------------------------------------------------------- */
+.admin-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 100vh;
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 200;
+
+  background: var(--panel-bg);
+  border-right: 1px solid var(--panel-border);
+}
+
+/* -------------------------------------------------------
+   PANEL SECTIONS
+------------------------------------------------------- */
+.admin-section {
+  margin-bottom: 28px;
+}
+
+.admin-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+
+  font-size: 16px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.admin-section-toggle {
+  font-size: 18px;
+  font-weight: bold;
+  padding-left: 10px;
+}
+
+/* Only opacity animates by default */
+.admin-section-body {
+  transition: opacity 0.3s ease;
+}
+
+/* Only animate max-height when toggling */
+.admin-section-body.animating {
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+/* -------------------------------------------------------
+   INPUTS
+------------------------------------------------------- */
+.admin-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.admin-input label {
+  margin-bottom: 6px;
+
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+.admin-input input,
+.admin-input select {
+  padding: 8px 10px;
+
+  font-size: 14px;
+  color: var(--text-light);
+
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius);
+}
+
+.admin-input input:focus,
+.admin-input select:focus {
+  border-color: var(--input-focus);
+  outline: none;
+}
+
+/* -------------------------------------------------------
+   SLIDERS
+------------------------------------------------------- */
+.control-slider input[type="range"] {
+  width: 100%;
+  height: 6px;
+
+  appearance: none;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+.control-slider input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* -------------------------------------------------------
+   BUTTONS
+------------------------------------------------------- */
+.admin-button {
+  margin-top: 10px;
+  padding: 10px 14px;
+
+  font-weight: bold;
+  color: #000;
+
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.admin-button:hover {
+  background: #ffb86b;
+}
+
+/* -------------------------------------------------------
+   UI THEME GRID
+------------------------------------------------------- */
+.ui-theme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.color-swatch {
+  margin-bottom: 0;
+}
+
+.color-swatch-box {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius);
+  border: 1px solid var(--input-border);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.color-swatch-fill {
+  width: 100%;
+  height: 100%;
+}
+
+.hex-input {
+  margin-top: 6px;
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 13px;
+  color: var(--text-light);
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius);
+}
+
+/* -------------------------------------------------------
+   RESPONSIVE
+------------------------------------------------------- */
+@media (max-width: 600px) {
+  .admin-sidebar {
+    width: 260px;
+  }
+}
